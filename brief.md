@@ -1,4 +1,4 @@
-# COCKTAILS+MUSIC APP "Open Sauce"
+# "Open Sauce" - A cocktail and music app
 **Goal:** A single page app, built using Spring and React frameworks.
 The app allows a user to input the cocktail ingredients they have available,
 then displays a list of cocktails they are able to make with those ingredients.
