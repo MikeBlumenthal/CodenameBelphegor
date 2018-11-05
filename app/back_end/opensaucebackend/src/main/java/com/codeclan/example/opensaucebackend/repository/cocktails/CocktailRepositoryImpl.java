@@ -1,4 +1,4 @@
 package com.codeclan.example.opensaucebackend.repository.cocktails;
 
-public class CocktailRepositoryImpl {
+public class CocktailRepositoryImpl implements CocktailRepositoryCustom {
 }

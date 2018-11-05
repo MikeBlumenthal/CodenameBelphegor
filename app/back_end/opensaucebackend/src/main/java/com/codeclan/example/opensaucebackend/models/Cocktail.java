@@ -3,7 +3,7 @@ package com.codeclan.example.opensaucebackend.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="cocktails")
@@ -13,24 +13,26 @@ public class Cocktail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
-    @Column
+    @Column(name = "recipe")
     private String recipe;
 
-    @Column
+    @Column(name = "garnish")
+    private String garnish;
+
+    @Column(name = "song")
     private String song;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "cocktail", fetch = FetchType.LAZY)
-    private ArrayList<Measure> contents;
+    private List<Measure> measures;
 
-    public Cocktail(String name, String recipe, String song){
+    public Cocktail(String name, String recipe, String garnish, String song){
         this.name = name;
         this.recipe = recipe;
+        this.garnish = garnish;
         this.song = song;
-        this.contents = new ArrayList<>();
     }
 
     public Cocktail (){
@@ -61,6 +63,14 @@ public class Cocktail {
         this.recipe = recipe;
     }
 
+    public String getGarnish() {
+        return garnish;
+    }
+
+    public void setGarnish(String garnish) {
+        this.garnish = garnish;
+    }
+
     public String getSong() {
         return song;
     }
@@ -69,11 +79,11 @@ public class Cocktail {
         this.song = song;
     }
 
-    public ArrayList<Measure> getContents() {
-        return contents;
+    public List<Measure> getMeasures() {
+        return measures;
     }
 
-    public void setContents(ArrayList<Measure> contents) {
-        this.contents = contents;
+    public void setMeasures(List<Measure> measures) {
+        this.measures = measures;
     }
 }
