@@ -3,12 +3,22 @@ import React, {Component} from 'react';
 class Selector extends Component {
   constructor(props){
     super(props);
-    this.state = null;
   }
 
   render(){
+
+    let ingredientOptions = this.props.ingredients.map( (ingredient, index) => {
+      return <option key = {index} value = {ingredient.name}>{ingredient.name}</option>
+    });
+
     return(
-      <h3>bo selector</h3>
+      <div>
+        <form>
+          <select name = 'WHAT YOU GOT'>
+            {ingredientOptions}
+          </select>
+        </form>
+      </div>
     )
   }
 }

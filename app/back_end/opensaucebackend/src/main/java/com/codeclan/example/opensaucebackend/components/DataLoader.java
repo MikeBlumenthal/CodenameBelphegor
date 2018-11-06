@@ -1,7 +1,7 @@
 package com.codeclan.example.opensaucebackend.components;
 
-import com.codeclan.example.opensaucebackend.models.Cocktail;
 import com.codeclan.example.opensaucebackend.models.Ingredient;
+import com.codeclan.example.opensaucebackend.models.Cocktail;
 import com.codeclan.example.opensaucebackend.models.Measure;
 import com.codeclan.example.opensaucebackend.repository.cocktails.CocktailRepository;
 import com.codeclan.example.opensaucebackend.repository.ingredients.IngredientRepository;
@@ -38,9 +38,15 @@ public class DataLoader implements ApplicationRunner {
         cocktailRepository.save(pinaColada);
 
         Ingredient lightRum = new Ingredient("Light Rum", true);
+        Ingredient darkRum = new Ingredient("Dark Rum", true);
+        Ingredient vodka = new Ingredient("Vodka", true);
+        Ingredient gin = new Ingredient("Gin", true);
         Ingredient coconutCream = new Ingredient("Coconut Cream", false);
         Ingredient pineappleJuice = new Ingredient("Pineapple Juice", false);
         ingredientRepository.save(lightRum);
+        ingredientRepository.save(darkRum);
+        ingredientRepository.save(vodka);
+        ingredientRepository.save(gin);
         ingredientRepository.save(coconutCream);
         ingredientRepository.save(pineappleJuice);
 
