@@ -23,11 +23,4 @@ public class OpensaucebackendApplicationTests {
 	public void contextLoads() {
 	}
 
-	@Test
-	public void canGetAllCocktailsForIngredientID() {
-        List<Cocktail> found = ingredientRepository.allCocktailsContainingIngredientWithId(1L);
-        assertEquals(1, found.size());
-        assertEquals("Pina Colada", found.get(0).getName());
-    }
-
 }

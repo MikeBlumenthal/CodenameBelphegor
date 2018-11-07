@@ -2,10 +2,8 @@ package com.codeclan.example.opensaucebackend.components;
 
 import com.codeclan.example.opensaucebackend.models.Ingredient;
 import com.codeclan.example.opensaucebackend.models.Cocktail;
-import com.codeclan.example.opensaucebackend.models.Measure;
 import com.codeclan.example.opensaucebackend.repository.cocktails.CocktailRepository;
 import com.codeclan.example.opensaucebackend.repository.ingredients.IngredientRepository;
-import com.codeclan.example.opensaucebackend.repository.measures.MeasureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -21,34 +19,59 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     IngredientRepository ingredientRepository;
 
-    @Autowired
-    MeasureRepository measureRepository;
-
     public DataLoader(){
 
     }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Cocktail pinaColada = new Cocktail(
-                "Pina Colada",
-                "1 part Light Rum, 1 part coconut cream, 3 parts Pineapple Juice",
-                "Mix with crushed ice in a blender. Serve in a hurricane glass.",
-                "a pineapple leaf and wedge of lime",
-                "https://youtu.be/TazHNpt6OTo");
-        cocktailRepository.save(pinaColada);
+
 
         Ingredient lightRum = new Ingredient("Light Rum", true);
         Ingredient darkRum = new Ingredient("Dark Rum", true);
         Ingredient vodka = new Ingredient("Vodka", true);
-        Ingredient gin = new Ingredient("Gin", true);
+
         ingredientRepository.save(lightRum);
         ingredientRepository.save(darkRum);
         ingredientRepository.save(vodka);
-        ingredientRepository.save(gin);
 
-        Measure measure1 = new Measure(50, lightRum, pinaColada);
-        measureRepository.save(measure1);
+        Cocktail pinaColada = new Cocktail(
+                "Pina Colada",
+                "Mix with crushed ice in a blender. Serve in a hurricane glass.",
+                "a pineapple leaf and wedge of lime",
+                "https://youtu.be/TazHNpt6OTo");
+
+        pinaColada.addIngredient(lightRum);
+        cocktailRepository.save(pinaColada);
+
+        Cocktail darkAndStormy = new Cocktail(
+                "Dark And Stormy",
+                "Build in a collins glass.",
+                "a wedge of lime",
+                "https://youtu.be/lS-af9Q-zvQ");
+
+        darkAndStormy.addIngredient(darkRum);
+        cocktailRepository.save(darkAndStormy);
+
+        Cocktail daiquiri = new Cocktail(
+                "Daiquiri",
+                "Shake hard with ice. Serve in a coupe glass.",
+                "a lime wheel",
+                "https://youtu.be/JNYOVEXJBBM");
+
+        daiquiri.addIngredient(lightRum);
+        cocktailRepository.save(daiquiri);
+
+        Cocktail zombie = new Cocktail(
+                "Zombie",
+                "Shake hard with ice. Serve in a tiki mug filled with crushed ice.",
+                "lots of fruit & a tiny umbrella",
+                "https://youtu.be/Qj5x6pbJMyU");
+
+        zombie.addIngredient(lightRum);
+        zombie.addIngredient(darkRum);
+        cocktailRepository.save(zombie);
+
     }
 
 }

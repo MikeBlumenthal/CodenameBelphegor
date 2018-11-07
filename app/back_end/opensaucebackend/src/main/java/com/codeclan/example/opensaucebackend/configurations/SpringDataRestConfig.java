@@ -11,6 +11,6 @@ public class SpringDataRestConfig extends RepositoryRestConfigurerAdapter {
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
-        config.exposeIdsFor(Cocktail.class, Ingredient.class, Measure.class);
+        config.exposeIdsFor(Cocktail.class, Ingredient.class);
     }
 }

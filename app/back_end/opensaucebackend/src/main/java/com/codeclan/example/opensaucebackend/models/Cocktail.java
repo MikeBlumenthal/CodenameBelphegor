@@ -1,8 +1,11 @@
 package com.codeclan.example.opensaucebackend.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,9 +19,6 @@ public class Cocktail {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "contents")
-    private String ingredients;
-
     @Column(name = "recipe")
     private String recipe;
 
@@ -28,15 +28,21 @@ public class Cocktail {
     @Column(name = "song")
     private String song;
 
-    @OneToMany(mappedBy = "cocktail", fetch = FetchType.LAZY)
-    private List<Measure> measures;
+    @JsonIgnoreProperties("cocktails")
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            joinColumns = {@JoinColumn(name = "cocktail_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "ingredient_id", nullable = false, updatable = false)}
+    )
+    private List<Ingredient> ingredients;
 
-    public Cocktail(String name, String ingredients, String recipe, String garnish, String song){
+    public Cocktail(String name, String recipe, String garnish, String song){
         this.name = name;
-        this.ingredients = ingredients;
         this.recipe = recipe;
         this.garnish = garnish;
         this.song = song;
+        this.ingredients =new ArrayList<Ingredient>();
     }
 
     public Cocktail (){
@@ -57,14 +63,6 @@ public class Cocktail {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
     }
 
     public String getRecipe() {
@@ -91,11 +89,16 @@ public class Cocktail {
         this.song = song;
     }
 
-    public List<Measure> getMeasures() {
-        return measures;
+    public List<Ingredient> getIngredients() {
+        return ingredients;
     }
 
-    public void setMeasures(List<Measure> measures) {
-        this.measures = measures;
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
+
+    public void addIngredient(Ingredient ingredient){
+        this.ingredients.add(ingredient);
+    }
+
 }

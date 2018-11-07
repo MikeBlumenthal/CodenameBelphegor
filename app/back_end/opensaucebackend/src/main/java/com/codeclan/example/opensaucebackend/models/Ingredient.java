@@ -1,8 +1,11 @@
 package com.codeclan.example.opensaucebackend.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,15 +22,23 @@ public class Ingredient {
     @Column(name = "alcoholic")
     private Boolean alcoholic;
 
-    @OneToMany(mappedBy = "ingredient", fetch = FetchType.LAZY)
-    private List<Measure> measures;
+    @JsonIgnoreProperties("ingredients")
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            name = "ingredients_cocktails",
+            joinColumns = {@JoinColumn(name = "ingredient_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name="cocktail_id", nullable = false, updatable = false)}
+    )
+    private List<Cocktail> cocktails;
 
-    public Ingredient(String name, boolean alcoholic){
+    public Ingredient(String name, boolean alcoholic) {
         this.name = name;
         this.alcoholic = alcoholic;
+        this.cocktails = new ArrayList<Cocktail>();
     }
 
-    public Ingredient (){
+    public Ingredient() {
 
     }
 
@@ -55,11 +66,16 @@ public class Ingredient {
         this.alcoholic = alcoholic;
     }
 
-    public List<Measure> getMeasures() {
-        return measures;
+    public List<Cocktail> getCocktails() {
+        return cocktails;
     }
 
-    public void setMeasures(List<Measure> measures) {
-        this.measures = measures;
+    public void setCocktails(List<Cocktail> cocktails) {
+        this.cocktails = cocktails;
     }
+
+    public void addCocktail(Cocktail cocktail){
+        this.cocktails.add(cocktail);
+    }
+
 }
