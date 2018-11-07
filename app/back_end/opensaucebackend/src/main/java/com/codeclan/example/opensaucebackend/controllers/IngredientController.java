@@ -14,4 +14,12 @@ import java.util.List;
 @RequestMapping(value = "/ingredients")
 public class IngredientController {
 
+    @Autowired
+    IngredientRepository ingredientRepository;
+
+    @GetMapping(value ="/getcocktails/{id}")
+    public List<Cocktail> getAllCocktailsForIngredient(@PathVariable long id){
+        return ingredientRepository.getAllCocktailsForIngredientByID(id);
+    }
+
 }
