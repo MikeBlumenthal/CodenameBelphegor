@@ -1,26 +1,25 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class Selector extends Component {
-  constructor(props){
-    super(props);
+const Selector = (props) => {
+
+  function handleSubmit(evt){
+    evt.preventDefault();
+    props.handleSelect(evt.target.ingredient.value);
   }
 
-  render(){
+  let ingredientOptions = props.ingredients.map( (ingredient, index) => {
+    return <option key = {index} value = {ingredient._links.self.href}>{ingredient.name}</option>
+  });
 
-    let ingredientOptions = this.props.ingredients.map( (ingredient, index) => {
-      return <option key = {index} value = {ingredient.id}>{ingredient.name}</option>
-    });
-
-    return(
-      <div>
-        <form>
-          <select name = 'WHAT YOU GOT'>
-            {ingredientOptions}
-          </select>
-        </form>
-      </div>
-    )
-  }
+  return(
+    <div>
+      <form onSelect = {handleSubmit}>
+        <select name = "ingredient" id = "selector">
+          {ingredientOptions}
+        </select>
+      </form>
+    </div>
+  )
 }
 
 export default Selector;

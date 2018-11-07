@@ -14,13 +14,13 @@ class SelectorBox extends Component{
     let request = new Request()
     request.get('/api/ingredients').then((data) => {
       this.setState({ingredients: data._embedded.ingredients})
-    })
+    });
   }
 
   render(){
     return(
     <React.Fragment>
-      <Selector ingredients = {this.state.ingredients} />
+      <Selector ingredients = {this.state.ingredients} handleSelect = {this.props.handleSelect} />
       <ReadyButton />
     </React.Fragment>
     )

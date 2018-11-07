@@ -7,16 +7,21 @@ import SelectedBox from './SelectedBox';
 class SelectionBox extends Component {
   constructor(props){
     super(props);
-    this.state = { selected: [
-      {id: 1, name:"martin"}
-    ] };
+    this.state = { selected: [] };
+    this.handleSelect = this.handleSelect.bind(this);
+  }
+
+  handleSelect(ingredient){
+    let newStateSelected = this.state.selected;
+    newStateSelected.push(ingredient);
+    this.setState({selected: newStateSelected})
   }
 
   render(){
     return(
     <React.Fragment>
-      <SelectorBox />
-      <SelectedBox selected = {this.state.selected}/>
+      <SelectorBox handleSelect = {this.handleSelect}/>
+      <SelectedBox selected = {this.state.selected} />
     </React.Fragment>
     )
   }
