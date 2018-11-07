@@ -14,7 +14,7 @@ public class Measure {
     private Long id;
 
     @Column(name = "amount")
-    private double amount_in_ml;
+    private double amount;
 
     @JsonIgnore
     @ManyToOne
@@ -26,8 +26,8 @@ public class Measure {
     @JoinColumn(name = "cocktail_id", nullable = false)
     private Cocktail cocktail;
 
-    public Measure(double amount_in_ml, Ingredient ingredient, Cocktail cocktail){
-        this.amount_in_ml = amount_in_ml;
+    public Measure(double amount, Ingredient ingredient, Cocktail cocktail){
+        this.amount = amount;
         this.ingredient = ingredient;
         this.cocktail = cocktail;
     }
@@ -44,12 +44,12 @@ public class Measure {
         this.id = id;
     }
 
-    public double getAmount_in_ml() {
-        return amount_in_ml;
+    public double getAmount() {
+        return amount;
     }
 
-    public void setAmount_in_ml(double amount_in_ml) {
-        this.amount_in_ml = amount_in_ml;
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public Ingredient getIngredient() {
