@@ -7,9 +7,12 @@ class OptionsBox extends Component {
   componentDidMount(){
     console.log("MOUNTED");
     let request = new Request();
-    // request.get('/api/ingredients').then((data) => {
-    //   this.setState({ingredients: data._embedded.ingredients})
-    // });
+      request.get(
+       //URL that gets cocktail by ingredient ID
+      ).then((data) => {
+        //
+      this.setState({ingredients: data._embedded.ingredients})
+    });
   }
 
   render(){
