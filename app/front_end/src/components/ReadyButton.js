@@ -4,12 +4,13 @@ import {Link} from 'react-router-dom';
 class ReadyButton extends Component {
   constructor(props){
     super(props);
-    this.state = null;
   }
 
   render(){
+    let data = this.props;
     return(
-      <Link to = '/options'>GO TO OPTIONS</Link>
+      <Link to = {{ pathname: '/options', state: data }}>GO TO OPTIONS</Link>
+
     )
   }
 }
