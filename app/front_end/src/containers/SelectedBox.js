@@ -14,7 +14,7 @@ class SelectedBox extends Component {
     const selectedIngredients = this.props.selected.map( (ingredient, index)=>{
       return (
         <li key={index}>
-          <SelectedDisplay ingredient = {ingredient} />
+          <SelectedDisplay ingredient = {ingredient} handleDelete = {this.props.handleDelete}/>
         </li>
       )
     });

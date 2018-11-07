@@ -10,6 +10,7 @@ class SelectionBox extends Component {
     super(props);
     this.state = { selected: []};
     this.handleSelect = this.handleSelect.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleSelect(data){
@@ -22,13 +23,21 @@ class SelectionBox extends Component {
     }
   }
 
+  handleDelete(obj){
+    let newStateSelected = this.state.selected;
+    let id = obj.id;
+    let index = newStateSelected.findIndex(current => current.id ===id);
+    newStateSelected.splice(index, 1);
+    this.setState({selected: newStateSelected});
+  }
+
   render(){
     console.log("TOPSTATE:", this.state.selected);
     return(
       <React.Fragment>
         <ReadyButton selected= {this.state.selected} />
         <Selector handleSelect = {this.handleSelect} />
-        <SelectedBox selected = {this.state.selected} />
+        <SelectedBox selected = {this.state.selected} handleDelete = {this.handleDelete}/>
       </React.Fragment>
     )
   }
