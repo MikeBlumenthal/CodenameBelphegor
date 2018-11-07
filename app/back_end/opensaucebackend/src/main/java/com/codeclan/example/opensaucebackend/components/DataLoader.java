@@ -32,6 +32,7 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         Cocktail pinaColada = new Cocktail(
                 "Pina Colada",
+                "rum, pineapple, coconut",
                 "Mix with crushed ice in a blender. Serve in a hurricane glass.",
                 "a pineapple leaf and wedge of lime",
                 "https://youtu.be/TazHNpt6OTo");
