@@ -9,7 +9,9 @@ class OptionDisplay extends Component {
 
   render(){
     return(
-      <Link to = '/drink/1'>COCKTAIL OPTION</Link>
+      <h1>{this.props.data}</h1>
+
+      // <Link to = '/drink/1'>COCKTAIL OPTION</Link>
     )
   }
 }

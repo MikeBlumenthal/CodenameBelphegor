@@ -7,10 +7,14 @@ const OptionsBox = (props)=> {
       <h3>I'm so sorry...You're going to have to drink it neat...</h3>
     )
   }
-  let cocktailOptions = 
+
+  let cocktailOptions = props.location.state.selected.map( (thing, index)=>{
+    return <OptionDisplay key = {index} data = {thing}/>
+  })
+
   return(
     <React.Fragment>
-      <OptionDisplay />
+      {cocktailOptions}
     </React.Fragment>
   )
 }
