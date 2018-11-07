@@ -16,6 +16,9 @@ public class Cocktail {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "contents")
+    private String ingredients;
+
     @Column(name = "recipe")
     private String recipe;
 
@@ -28,8 +31,9 @@ public class Cocktail {
     @OneToMany(mappedBy = "cocktail", fetch = FetchType.LAZY)
     private List<Measure> measures;
 
-    public Cocktail(String name, String recipe, String garnish, String song){
+    public Cocktail(String name, String ingredients, String recipe, String garnish, String song){
         this.name = name;
+        this.ingredients = ingredients;
         this.recipe = recipe;
         this.garnish = garnish;
         this.song = song;
@@ -53,6 +57,14 @@ public class Cocktail {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
     }
 
     public String getRecipe() {

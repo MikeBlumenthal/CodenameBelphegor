@@ -33,7 +33,7 @@ public class DataLoader implements ApplicationRunner {
         Cocktail pinaColada = new Cocktail(
                 "Pina Colada",
                 "Mix with crushed ice in a blender. Serve in a hurricane glass.",
-                "A pineapple leaf and wedge of lime",
+                "a pineapple leaf and wedge of lime",
                 "https://youtu.be/TazHNpt6OTo");
         cocktailRepository.save(pinaColada);
 
