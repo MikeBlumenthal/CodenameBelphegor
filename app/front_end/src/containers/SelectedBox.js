@@ -3,18 +3,27 @@ import React, {Component} from 'react';
 import SelectedDisplay from '../components/SelectedDisplay';
 
 class SelectedBox extends Component {
-  constructor(props){
-    super(props);
-    this.state = null;
-  }
+
 
   render(){
-    return(
+
+    const selectedIngredients = this.props.selected.map( (ingredient)=>{
+      return (
+        <li key={ingredient.id}>
+          <SelectedDisplay ingredient = {ingredient} />
+        </li>
+      )
+    });
+
+  return(
     <React.Fragment>
-      <SelectedDisplay />
+      <ul>
+        {selectedIngredients}
+      </ul>
     </React.Fragment>
-    )
-  }
+  )
+}
+
 }
 
 export default SelectedBox;

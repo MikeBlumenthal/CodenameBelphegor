@@ -8,7 +8,7 @@ class Selector extends Component {
   render(){
 
     let ingredientOptions = this.props.ingredients.map( (ingredient, index) => {
-      return <option key = {index} value = {ingredient.name}>{ingredient.name}</option>
+      return <option key = {index} value = {ingredient.id}>{ingredient.name}</option>
     });
 
     return(

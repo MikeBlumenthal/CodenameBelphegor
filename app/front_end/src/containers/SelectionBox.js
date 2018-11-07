@@ -7,7 +7,9 @@ import SelectedBox from './SelectedBox';
 class SelectionBox extends Component {
   constructor(props){
     super(props);
-    this.state = { selected: [] };
+    this.state = { selected: [
+      {id: 1, name:"martin"}
+    ] };
   }
 
   render(){
