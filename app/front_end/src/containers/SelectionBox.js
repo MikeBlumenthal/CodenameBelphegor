@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 
-import SelectorBox from './SelectorBox';
+import Selector from '../components/Selector';
 import SelectedBox from './SelectedBox';
+import ReadyButton from '../components/ReadyButton';
 
 
 class SelectionBox extends Component {
@@ -20,7 +21,8 @@ class SelectionBox extends Component {
   render(){
     return(
     <React.Fragment>
-      <SelectorBox handleSelect = {this.handleSelect}/>
+      <ReadyButton selected= {this.state.selected}/>
+      <Selector handleSelect = {this.handleSelect}/>
       <SelectedBox selected = {this.state.selected} />
     </React.Fragment>
     )

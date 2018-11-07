@@ -32,7 +32,7 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         Cocktail pinaColada = new Cocktail(
                 "Pina Colada",
-                "rum, pineapple, coconut",
+                "1 part Light Rum, 1 part coconut cream, 3 parts Pineapple Juice",
                 "Mix with crushed ice in a blender. Serve in a hurricane glass.",
                 "a pineapple leaf and wedge of lime",
                 "https://youtu.be/TazHNpt6OTo");
@@ -42,21 +42,13 @@ public class DataLoader implements ApplicationRunner {
         Ingredient darkRum = new Ingredient("Dark Rum", true);
         Ingredient vodka = new Ingredient("Vodka", true);
         Ingredient gin = new Ingredient("Gin", true);
-        Ingredient coconutCream = new Ingredient("Coconut Cream", false);
-        Ingredient pineappleJuice = new Ingredient("Pineapple Juice", false);
         ingredientRepository.save(lightRum);
         ingredientRepository.save(darkRum);
         ingredientRepository.save(vodka);
         ingredientRepository.save(gin);
-        ingredientRepository.save(coconutCream);
-        ingredientRepository.save(pineappleJuice);
 
         Measure measure1 = new Measure(50, lightRum, pinaColada);
-        Measure measure2 = new Measure(50, coconutCream, pinaColada);
-        Measure measure3 = new Measure(150, pineappleJuice, pinaColada);
         measureRepository.save(measure1);
-        measureRepository.save(measure2);
-        measureRepository.save(measure3);
     }
 
 }

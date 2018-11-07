@@ -7,9 +7,9 @@ class SelectedBox extends Component {
 
   render(){
 
-    const selectedIngredients = this.props.selected.map( (ingredient)=>{
+    const selectedIngredients = this.props.selected.map( (ingredient, index)=>{
       return (
-        <li key={ingredient.id}>
+        <li key={index}>
           <SelectedDisplay ingredient = {ingredient} />
         </li>
       )

@@ -1,25 +1,47 @@
-import React from 'react';
+import React, {Component} from 'react';
+import Request from '../helpers/Request';
 
-const Selector = (props) => {
+class Selector extends Component {
 
-  function handleSubmit(evt){
-    evt.preventDefault();
-    props.handleSelect(evt.target.ingredient.value);
+  constructor(props){
+    super(props);
+    this.state = {ingredients:[]};
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  let ingredientOptions = props.ingredients.map( (ingredient, index) => {
-    return <option key = {index} value = {ingredient._links.self.href}>{ingredient.name}</option>
-  });
+  componentDidMount(){
+    let request = new Request()
+    request.get('/api/ingredients').then((data) => {
+      this.setState({ingredients: data._embedded.ingredients})
+    });
+  }
 
-  return(
-    <div>
-      <form onSelect = {handleSubmit}>
-        <select name = "ingredient" id = "selector">
-          {ingredientOptions}
-        </select>
-      </form>
-    </div>
-  )
+  handleSubmit(evt){
+    evt.preventDefault();
+    const value = evt.target.ingredient.value;
+    this.props.handleSelect(value);
+    }
+
+  render(){
+
+    const ingredientOptions = this.state.ingredients.map( (ingredient, index) => {
+      return(
+        <option key = {index} value = {ingredient.name}>{ingredient.name}</option>
+      )
+    });
+
+    return(
+      <React.Fragment>
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <select name = "ingredient">
+              {ingredientOptions}
+            </select>
+            <button type="submit">Go</button>
+          </form>
+        </div>
+      </React.Fragment>
+    )
+  }
 }
-
 export default Selector;
