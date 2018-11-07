@@ -18,15 +18,19 @@ class Selector extends Component {
 
   handleSubmit(evt){
     evt.preventDefault();
-    const value = evt.target.ingredient.value;
-    this.props.handleSelect(value);
-    }
+    const data = JSON.parse(evt.target.ingredient.value);
+    this.props.handleSelect(data);
+  }
 
   render(){
 
     const ingredientOptions = this.state.ingredients.map( (ingredient, index) => {
       return(
-        <option key = {index} value = {ingredient.name}>{ingredient.name}</option>
+        <option
+          key = {index}
+          value = {JSON.stringify(ingredient)}
+          >{ingredient.name}
+        </option>
       )
     });
 
