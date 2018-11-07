@@ -32,7 +32,6 @@ class SelectionBox extends Component {
   }
 
   render(){
-    console.log("TOPSTATE:", this.state.selected);
     return(
       <React.Fragment>
         <ReadyButton selected= {this.state.selected} />

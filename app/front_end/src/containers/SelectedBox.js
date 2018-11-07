@@ -9,7 +9,6 @@ class SelectedBox extends Component {
   }
 
   render(){
-    console.log("SELECTED BOX:", this.props);
 
     const selectedIngredients = this.props.selected.map( (ingredient, index)=>{
       return (

@@ -7,7 +7,7 @@ class ReadyButton extends Component {
 
     console.log("READY:", this.props);
     return(
-      <Link to = {{ pathname: '/options', state: null }}>GO TO OPTIONS</Link>
+      <Link to = {{ pathname: '/options', state: this.props }}>GO TO OPTIONS</Link>
 
     )
   }

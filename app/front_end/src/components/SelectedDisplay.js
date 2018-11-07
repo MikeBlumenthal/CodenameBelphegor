@@ -11,7 +11,6 @@ class SelectedDisplay extends Component{
   }
 
   render(){
-    console.log("Selected Display:", this.props.ingredient);
     return(
       <React.Fragment>
         <h3>I, an {this.props.ingredient.name}, has been chosen.</h3>
