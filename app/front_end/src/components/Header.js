@@ -4,10 +4,12 @@ import {Link} from 'react-router-dom';
 const Header = (props)=>{
   return (
     <header>
-      <h1>Your Spirit Guide</h1>
-      <h2>
+      <img></img>
+      <h2>Your Spirit Guide</h2>
+      <br/>
+      <h4>
         <Link to = '/selection'>Choose your booze...</Link>
-      </h2>
+      </h4>
     </header>
   )
 }

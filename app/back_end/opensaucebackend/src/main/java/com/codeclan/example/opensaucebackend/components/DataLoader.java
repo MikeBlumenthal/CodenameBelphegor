@@ -37,7 +37,8 @@ public class DataLoader implements ApplicationRunner {
 
         Cocktail pinaColada = new Cocktail(
                 "Pina Colada",
-                "Mix with crushed ice in a blender. Serve in a hurricane glass.",
+                "60ml light rum, 90ml pineapple juice, 30ml coconut cream, 15ml lime juice",
+                "Mix with crushed ice in a blender, Serve in a hurricane glass.",
                 "a pineapple leaf and wedge of lime",
                 "https://www.youtube.com/embed/TazHNpt6OTo?controls=1?autoplay=1");
 
@@ -46,27 +47,30 @@ public class DataLoader implements ApplicationRunner {
 
         Cocktail darkAndStormy = new Cocktail(
                 "Dark And Stormy",
+                "50ml dark rum, 20ml lime juice, 100ml ginger beer",
                 "Build in a collins glass.",
                 "a wedge of lime",
-                "https://youtu.be/lS-af9Q-zvQ");
+                "https://www.youtube.com/embed/iv8GW1GaoIc?controls=1?autoplay=1");
 
         darkAndStormy.addIngredient(darkRum);
         cocktailRepository.save(darkAndStormy);
 
         Cocktail daiquiri = new Cocktail(
-                "Daiquiri",
+                "Classic Daiquiri",
+                "50ml light rum, 20ml lime juice, 10ml gomme",
                 "Shake hard with ice. Serve in a coupe glass.",
-                "a lime wheel",
-                "https://youtu.be/JNYOVEXJBBM");
+                "a lime zest twist",
+                "https://www.youtube.com/embed/JNYOVEXJBBM?controls=1?autoplay=0");
 
         daiquiri.addIngredient(lightRum);
         cocktailRepository.save(daiquiri);
 
         Cocktail zombie = new Cocktail(
                 "Zombie",
+                "50ml light rum, 50ml dark rum, 25ml cointreau, 50ml pineapple juice, 50ml orange juice, 20ml lime juice, 10ml grenadine",
                 "Shake hard with ice. Serve in a tiki mug filled with crushed ice.",
                 "lots of fruit & a tiny umbrella",
-                "https://youtu.be/Qj5x6pbJMyU");
+                "https://www.youtube.com/embed/6Ejga4kJUts?controls=1?autoplay=0");
 
         zombie.addIngredient(lightRum);
         zombie.addIngredient(darkRum);

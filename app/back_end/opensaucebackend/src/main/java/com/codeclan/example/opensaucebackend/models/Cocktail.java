@@ -19,6 +19,9 @@ public class Cocktail {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "contents")
+    private String contents;
+
     @Column(name = "recipe")
     private String recipe;
 
@@ -37,8 +40,9 @@ public class Cocktail {
     )
     private List<Ingredient> ingredients;
 
-    public Cocktail(String name, String recipe, String garnish, String song){
+    public Cocktail(String name, String contents, String recipe, String garnish, String song){
         this.name = name;
+        this.contents = contents;
         this.recipe = recipe;
         this.garnish = garnish;
         this.song = song;
@@ -63,6 +67,14 @@ public class Cocktail {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getContents() {
+        return contents;
+    }
+
+    public void setContents(String contents) {
+        this.contents = contents;
     }
 
     public String getRecipe() {
