@@ -1,14 +1,18 @@
 import React, {Component} from 'react';
 
 class RecipeDisplay extends Component {
-  constructor(props){
-    super(props);
-    this.state = null;
-  }
+
 
   render(){
+    const cocktail = this.props.location.state.cocktail;
+    console.log(cocktail);
     return(
-      <h3>i am a recipe</h3>
+      <div>
+        <h3>i am a {cocktail.name}</h3>
+        <p>{cocktail.recipe}</p>
+        <iframe src = {cocktail.song}></iframe>
+
+      </div>
     )
   }
 }

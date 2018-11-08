@@ -10,7 +10,7 @@ class OptionDisplay extends Component {
   render(){
     return(
       <React.Fragment>
-      <Link key = {this.props.displayId} to = {{ pathname: ('/drink/' + this.props.cocktail.id), state: this.props.cocktail }}>{this.props.cocktail.name}</Link> 
+      <Link key = {this.props.displayId} to = {{ pathname: ('/drink/' + this.props.cocktail.id), state: this.props }}>{this.props.cocktail.name}</Link> 
       <br/>
       </React.Fragment>
     )

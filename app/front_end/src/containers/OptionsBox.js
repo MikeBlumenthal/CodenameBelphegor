@@ -39,7 +39,7 @@ class OptionsBox extends Component {
       }
 
       let cocktailOptions = this.processOptions(this.state.cocktails).map((cocktail, index)=>{
-        return<OptionDisplay key = {index} displayId = {index} cocktail={cocktail} />
+        return<OptionDisplay key = {index} cocktail={cocktail} />
       })
 
       return(

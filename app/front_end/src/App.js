@@ -18,11 +18,7 @@ class App extends Component {
           <Switch>
             <Route exact path = '/selection' component = {SelectionBox} />
             <Route exact path = '/options' component = {OptionsBox} />
-            <Route exact path= '/drink/:id' render = {(props) => {
-            const id = props.match.params.id;
-            return <RecipeDisplay id = {id} />
-            }}
-          />
+            <Route exact path= '/drink/:id' component = {RecipeDisplay}/>
           </Switch>
         </React.Fragment>
       </Router>

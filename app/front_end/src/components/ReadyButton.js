@@ -5,7 +5,6 @@ class ReadyButton extends Component {
 
   render(){
 
-    console.log("READY:", this.props);
     return(
       <Link to = {{ pathname: '/options', state: this.props }}>GO TO OPTIONS</Link>
 

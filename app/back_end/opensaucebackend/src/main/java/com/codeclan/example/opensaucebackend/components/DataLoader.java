@@ -39,7 +39,7 @@ public class DataLoader implements ApplicationRunner {
                 "Pina Colada",
                 "Mix with crushed ice in a blender. Serve in a hurricane glass.",
                 "a pineapple leaf and wedge of lime",
-                "https://youtu.be/TazHNpt6OTo");
+                "https://www.youtube.com/embed/TazHNpt6OTo?controls=1?autoplay=1");
 
         pinaColada.addIngredient(lightRum);
         cocktailRepository.save(pinaColada);
