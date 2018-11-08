@@ -4,35 +4,51 @@ import Request from '../helpers/Request';
 
 class OptionsBox extends Component {
 
-  componentDidMount(){
-    console.log("MOUNTED");
-    let request = new Request();
-      request.get(
-       //URL that gets cocktail by ingredient ID
-      ).then((data) => {
-        //
-      this.setState({ingredients: data._embedded.ingredients})
-    });
+  constructor(props){
+    super(props);
+    this.state = { cocktails: [] };
+    this.processOptions = this.processOptions.bind(this);
   }
 
-  render(){
-    console.log(this.props.location.state.selected);
-    if(this.props.location.state.selected < 1){
-      return(
-        <h3>I'm so sorry...You're going to have to drink it neat...</h3>
-      )
+  processOptions(options){
+    let processedOptions = [];
+    options.forEach( option => processedOptions = [...processedOptions, ...option]);
+    return processedOptions;
+  }
+
+  componentDidMount(){
+    const urlArray = this.props.location.state.selected.map(element => {
+      return `/ingredients/getcocktails/${element.id}`});
+      urlArray.forEach( url => {
+        let request = new Request();
+        request.get( url )
+        .then( (data) => {
+          let newState = this.state.cocktails;
+          newState.push(data);
+          this.setState({cocktails: newState});
+        })
+      })
     }
 
-    let cocktailOptions = this.props.location.state.selected.map( (ingredient, index)=>{
-      return <OptionDisplay key = {index} data = {ingredient} />
-    })
-    return(
-      <React.Fragment>
-        <h2>options box</h2>
-        {cocktailOptions}
-      </React.Fragment>
-    )
-  }
-}
 
-export default OptionsBox;
+    render(){
+      if(this.state.cocktails.length < 1){
+        return(
+          <h3>I'm sorry...we have no recipes for that...You're going to have to drink it neat...</h3>
+        )
+      }
+
+      let cocktailOptions = this.processOptions(this.state.cocktails).map((cocktail, index)=>{
+        return<OptionDisplay key = {index} displayId = {index} cocktail={cocktail} />
+      })
+
+      return(
+        <React.Fragment>
+          <h2>options box</h2>
+          {cocktailOptions}
+        </React.Fragment>
+      )
+    }
+  }
+
+  export default OptionsBox;

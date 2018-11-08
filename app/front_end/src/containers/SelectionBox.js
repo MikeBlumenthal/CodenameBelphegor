@@ -16,7 +16,7 @@ class SelectionBox extends Component {
   handleSelect(data){
     let newStateSelected = this.state.selected;
     let id = data.id;
-    if (!((this.state.selected.findIndex(current => current.id === id) >= 0)) )
+    if ( !((this.state.selected.findIndex(current => current.id === id) >= 0)))
     {
       newStateSelected.push(data);
       this.setState({selected: newStateSelected})
